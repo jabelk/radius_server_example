@@ -177,33 +177,31 @@ There may be one or many radius server IP addresses, so we use a leaf-list. If t
 
 
 ```xml
-
 <config>
-
 <aaa xmlns="urn:ios">
-<new-model/>
-<authentication>
-  <ppp>
-    <name>default</name>
-    <group>radius</group>
-  </ppp>
-</authentication>
+  <new-model/>
+  <authentication>
+    <ppp>
+      <name>default</name>
+      <group>radius</group>
+    </ppp>
+  </authentication>
 </aaa>
 
 <radius xmlns="urn:ios">
-  <server>
-    <id>{/region}</id>
+    <server>
+      <id>{/region}</id>
     <?foreach {/radius_server_list}?>
-    <address>
-      <ipv4>
-   		 <host>{current()}</host>
-  		<auth-port>{/auth-port}</auth-port>
-  		<acct-port>{/acct-port}</acct-port>
-      </ipv4>
-    </address>
-  <?end?>
-  </server>
-</radius>
+      <address>
+        <ipv4>
+          <host>{current()}</host>
+          <auth-port>{/auth-port}</auth-port>
+          <acct-port>{/acct-port}</acct-port>
+        </ipv4>
+      </address>
+    <?end?>
+    </server>
+  </radius>
 </config>
 ```
 

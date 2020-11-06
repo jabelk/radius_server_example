@@ -5,7 +5,6 @@
 
       <name>{/device}</name>
       <config>
-
       <aaa xmlns="urn:ios">
         <new-model/>
         <authentication>
@@ -19,15 +18,15 @@
       <radius xmlns="urn:ios">
           <server>
             <id>{/region}</id>
-                        <?foreach {/radius_server_list}?>
+          <?foreach {/radius_server_list}?>
             <address>
               <ipv4>
                 <host>{current()}</host>
-          <auth-port>{/auth-port}</auth-port>
-          <acct-port>{/acct-port}</acct-port>
+                <auth-port>{/auth-port}</auth-port>
+                <acct-port>{/acct-port}</acct-port>
               </ipv4>
             </address>
-                  <?end?>
+          <?end?>
           </server>
         </radius>
       </config>
