@@ -1,0 +1,50 @@
+module radius_server_example {
+  namespace "http://com/example/radius_server_example";
+  prefix radius_server_example;
+
+  import ietf-inet-types {
+    prefix inet;
+  }
+  import tailf-ncs {
+    prefix ncs;
+  }
+
+  list radius_server_example {
+
+    uses ncs:service-data;
+    ncs:servicepoint "radius_server_example";
+
+    key region;
+
+    leaf region {
+      type enumeration {
+        enum "AMER";
+        enum "APJC";
+        enum "EMEA";
+      }
+    }
+
+
+    // may replace this with other ways of refering to the devices.
+    leaf-list device {
+      type leafref {
+        path "/ncs:devices/ncs:device/ncs:name";
+      }
+    }
+
+    leaf-list radius_server_list{
+      type inet:ipv4-address;
+    }
+ 
+
+
+    leaf auth-port {
+      type inet:port-number;
+    }
+  
+    leaf acct-port {
+      type inet:port-number;
+    }
+  
+  }
+}

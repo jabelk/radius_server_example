@@ -1,0 +1,36 @@
+<config-template xmlns="http://tail-f.com/ns/config/1.0"
+                 servicepoint="radius_server_example">
+  <devices xmlns="http://tail-f.com/ns/ncs">
+    <device>
+
+      <name>{/device}</name>
+      <config>
+
+      <aaa xmlns="urn:ios">
+        <new-model/>
+        <authentication>
+          <ppp>
+            <name>default</name>
+            <group>radius</group>
+          </ppp>
+        </authentication>
+      </aaa>
+
+      <radius xmlns="urn:ios">
+          <server>
+            <id>{/region}</id>
+                        <?foreach {/radius_server_list}?>
+            <address>
+              <ipv4>
+                <host>{current()}</host>
+          <auth-port>{/auth-port}</auth-port>
+          <acct-port>{/acct-port}</acct-port>
+              </ipv4>
+            </address>
+                  <?end?>
+          </server>
+        </radius>
+      </config>
+    </device>
+  </devices>
+</config-template>
