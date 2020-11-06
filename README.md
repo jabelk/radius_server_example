@@ -91,6 +91,7 @@ native {
         data  aaa new-model
               aaa authentication ppp default group radius
               radius server EMEA
+              address ipv4 172.70.70.10 auth-port 1005 acct-port 1000
               address ipv4 172.80.80.10 auth-port 1005 acct-port 1000
              !
     }
@@ -99,6 +100,7 @@ native {
         data  aaa new-model
               aaa authentication ppp default group radius
              radius server APJC
+              address ipv4 172.90.70.10 auth-port 1005 acct-port 1000
               address ipv4 172.100.80.10 auth-port 1005 acct-port 1000
              !
     }
@@ -107,6 +109,7 @@ native {
         data aaa new-model
              aaa authentication ppp default group radius
              radius server AMER
+              address ipv4 172.30.10.12 auth-port 700 acct-port 671
               address ipv4 172.40.20.22 auth-port 700 acct-port 671
              !
     }
@@ -203,3 +206,5 @@ There may be one or many radius server IP addresses, so we use a leaf-list. If t
         </radius>
       </config>
 ```
+
+Thus the resulting configuration 
