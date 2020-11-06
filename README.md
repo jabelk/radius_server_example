@@ -19,7 +19,7 @@ This example assumes a working knowledge of services and NSO.
 
 [Reserve the NSO Reservable Sandbox](https://blogs.cisco.com/developer/nso-learning-lab-and-sandbox)
 
-Use some type of file transfer program or [VS Code has remote SSH] (https://code.visualstudio.com/docs/remote/ssh) (drag and drop the package into the packages directory)
+Use some type of file transfer program or [VS Code has remote SSH](https://code.visualstudio.com/docs/remote/ssh) (drag and drop the package into the packages directory)
 
 This repo should go here:
 
