@@ -88,17 +88,17 @@ developer@ncs(config-radius_server_example-AMER)# commit dry-run outformat nativ
 native {
     device {
         name dist-rtr01
-        data  aaa new-model
-              aaa authentication ppp default group radius
-              radius server EMEA
+        data aaa new-model
+             aaa authentication ppp default group radius
+             radius server EMEA
               address ipv4 172.70.70.10 auth-port 1005 acct-port 1000
               address ipv4 172.80.80.10 auth-port 1005 acct-port 1000
              !
     }
     device {
         name dist-rtr02
-        data  aaa new-model
-              aaa authentication ppp default group radius
+        data aaa new-model
+             aaa authentication ppp default group radius
              radius server APJC
               address ipv4 172.90.70.10 auth-port 1005 acct-port 1000
               address ipv4 172.100.80.10 auth-port 1005 acct-port 1000
@@ -178,33 +178,33 @@ There may be one or many radius server IP addresses, so we use a leaf-list. If t
 
 ```xml
 
-      <config>
+<config>
 
-      <aaa xmlns="urn:ios">
-        <new-model/>
-        <authentication>
-          <ppp>
-            <name>default</name>
-            <group>radius</group>
-          </ppp>
-        </authentication>
-      </aaa>
+<aaa xmlns="urn:ios">
+<new-model/>
+<authentication>
+  <ppp>
+    <name>default</name>
+    <group>radius</group>
+  </ppp>
+</authentication>
+</aaa>
 
-      <radius xmlns="urn:ios">
-          <server>
-            <id>{/region}</id>
-            <?foreach {/radius_server_list}?>
-            <address>
-              <ipv4>
-           		 <host>{current()}</host>
-          		<auth-port>{/auth-port}</auth-port>
-          		<acct-port>{/acct-port}</acct-port>
-              </ipv4>
-            </address>
-          <?end?>
-          </server>
-        </radius>
-      </config>
+<radius xmlns="urn:ios">
+  <server>
+    <id>{/region}</id>
+    <?foreach {/radius_server_list}?>
+    <address>
+      <ipv4>
+   		 <host>{current()}</host>
+  		<auth-port>{/auth-port}</auth-port>
+  		<acct-port>{/acct-port}</acct-port>
+      </ipv4>
+    </address>
+  <?end?>
+  </server>
+</radius>
+</config>
 ```
 
 We are also using the `current()` XPATH function to grab the IP address of whatever the current loop iteration IP address is and plug that into the `host` input leaf. So the resulting configuration looks like this:
