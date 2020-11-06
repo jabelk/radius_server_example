@@ -173,7 +173,7 @@ In this service package we have the following data model:
 
 Where we have each service instance defined by what region the server is in. This unique key will be the server ID in the configuration template. 
 
-There may be one or many radius server IP addresses, so we use a leaf-list. If there is more than one server, the statement `<?foreach {/radius_server_list}?>` loops for each IP in the leaf list input, with an `<?end?>` at the end of that block of XML. It is purposely indented differently to make it easier to spot. 
+There may be one or many radius server IP addresses, so we use a leaf-list. If there is more than one server, the statement `<?foreach {/radius_server_list}?>` loops for each IP in the leaf list input, with an `<?end?>` at the end of that block of XML. 
 
 
 ```xml
@@ -193,18 +193,26 @@ There may be one or many radius server IP addresses, so we use a leaf-list. If t
       <radius xmlns="urn:ios">
           <server>
             <id>{/region}</id>
-                        <?foreach {/radius_server_list}?>
+            <?foreach {/radius_server_list}?>
             <address>
               <ipv4>
-                <host>{current()}</host>
-          <auth-port>{/auth-port}</auth-port>
-          <acct-port>{/acct-port}</acct-port>
+           		 <host>{current()}</host>
+          		<auth-port>{/auth-port}</auth-port>
+          		<acct-port>{/acct-port}</acct-port>
               </ipv4>
             </address>
-                  <?end?>
+          <?end?>
           </server>
         </radius>
       </config>
 ```
 
-Thus the resulting configuration 
+We are also using the `current()` XPATH function to grab the IP address of whatever the current loop iteration IP address is and plug that into the `host` input leaf. So the resulting configuration looks like this:
+
+```
+  aaa new-model
+  aaa authentication ppp default group radius
+  radius server EMEA
+  address ipv4 172.70.70.10 auth-port 1005 acct-port 1000
+  address ipv4 172.80.80.10 auth-port 1005 acct-port 1000
+```
