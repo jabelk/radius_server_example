@@ -14,14 +14,10 @@ module radius_server_example {
     uses ncs:service-data;
     ncs:servicepoint "radius_server_example";
 
-    key region;
+    key service-instance;
 
-    leaf region {
-      type enumeration {
-        enum "AMER";
-        enum "APJC";
-        enum "EMEA";
-      }
+    leaf service-instance {
+      type string;
     }
 
 
@@ -32,19 +28,24 @@ module radius_server_example {
       }
     }
 
-    leaf-list radius_server_list{
+    list radius-servers{
+      key server-name;
+
+      leaf server-name{
+        type string;
+      }
+
+      leaf server-ip{
       type inet:ipv4-address;
-    }
- 
+      }
 
-
-    leaf auth-port {
+          leaf auth-port {
       type inet:port-number;
     }
-  
+
     leaf acct-port {
       type inet:port-number;
     }
-  
+    }
   }
 }

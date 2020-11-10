@@ -16,18 +16,18 @@
       </aaa>
 
       <radius xmlns="urn:ios">
+          <?foreach {/radius-servers}?>
           <server>
-            <id>{/region}</id>
-          <?foreach {/radius_server_list}?>
+            <id>{server-name}</id>
             <address>
               <ipv4>
-                <host>{current()}</host>
-                <auth-port>{/auth-port}</auth-port>
-                <acct-port>{/acct-port}</acct-port>
+                <host>{server-ip}</host>
+                <auth-port>{auth-port}</auth-port>
+                <acct-port>{acct-port}</acct-port>
               </ipv4>
             </address>
-          <?end?>
           </server>
+          <?end?>
         </radius>
       </config>
     </device>
