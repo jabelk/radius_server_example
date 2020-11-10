@@ -17,7 +17,9 @@ This example assumes a working knowledge of services and NSO.
 
 ## Installation
 
-[Reserve the NSO Reservable Sandbox](https://blogs.cisco.com/developer/nso-learning-lab-and-sandbox)
+[Reserve the NSO Reservable Sandbox](https://devnetsandbox.cisco.com/RM/Diagram/Index/43964e62-a13c-4929-bde7-a2f68ad6b27c?diagramType=Topology)
+
+If you need to revisit some of the NSO Basics, you can [start here](https://blogs.cisco.com/developer/nso-learning-lab-and-sandbox). 
 
 Use some type of file transfer program or [VS Code has remote SSH](https://code.visualstudio.com/docs/remote/ssh) (drag and drop the package into the packages directory)
 
